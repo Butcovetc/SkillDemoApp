@@ -1,5 +1,6 @@
 ﻿using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response.Base;
+using DemoApp.Model.Exceptions;
 using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Units.Abstract;
@@ -46,7 +47,7 @@ namespace DemoApp.Model.Factories
         /// <typeparam name="TRequest">Request type</typeparam>
         /// <returns>Factory object</returns>
         public UnitFactory SetRequestType<TRequest>()
-            where TRequest : ReqBase
+            where TRequest : RequestBase
         {
             _requestType = typeof(TRequest);
             return this;
@@ -83,17 +84,26 @@ namespace DemoApp.Model.Factories
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
         public object CreateUnit(object[] args)
         {
-            ArgumetMissingException.ThrowIfNull(_unitType);
+            try
+            {
+                ArgumetMissingException.ThrowIfNull(_unitType);
 
-            ArgumetMissingException.ThrowIfNull(_resultType);
+                ArgumetMissingException.ThrowIfNull(_resultType);
 
-            ArgumetMissingException.ThrowIfNull(_requestType);
+                ArgumetMissingException.ThrowIfNull(_requestType);
 
-            var unitObj = Activator.CreateInstance(_unitType, args: args);
+                var unitObj = Activator.CreateInstance(_unitType, args: args);
 
-            return unitObj == null ?
-                throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!")
-                : unitObj;
+                return unitObj ?? throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!");
+            }
+            catch (BaseApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!",ex);
+            }
         }
         
         public static UnitFactory Create()

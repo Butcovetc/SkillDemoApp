@@ -16,5 +16,14 @@ namespace DemoApp.Model.Exceptions.Critical
             : base(ErrorCodeEnum.CriticalError, message)
         {
         }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">Message</param>
+        public KernerErrorException(String message,Exception ex)
+            : base(ErrorCodeEnum.CriticalError, message,ex)
+        {
+        }
     }
 }

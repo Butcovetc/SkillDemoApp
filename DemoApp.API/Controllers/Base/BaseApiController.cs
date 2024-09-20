@@ -1,10 +1,8 @@
 ﻿using System.Net.Mime;
-using System.Reflection;
 using DemoApp.Model.Dal;
 using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.Exceptions;
-using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Factories;
 using DemoApp.Model.Units.Base;
@@ -38,7 +36,7 @@ namespace Monee.RestApi.Controllers.Base
         /// <param name="request">ReqBody object</param>
         /// <exception cref="ArgumentNullException"></exception>
         protected TRequest AddIpToRequest<TRequest>(TRequest request)
-            where TRequest: ReqBase
+            where TRequest: RequestBase
         {
             if (request == null)
                 throw new KernerErrorException("Nullable request object");
@@ -61,7 +59,7 @@ namespace Monee.RestApi.Controllers.Base
         public TResult Run<TResult, TUnitOfWorlk, TRequest>(TRequest request, bool ignoreLogs = false)
             where TResult : ResponseBase, new()
             where TUnitOfWorlk : RequestResultUnitAbstract<TResult,TRequest>
-            where TRequest : ReqBase
+            where TRequest : RequestBase
         {
             //using (var l = new LogUnit())
             {

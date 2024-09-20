@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DemoApp.Model.Dal.Response.Base
+﻿namespace DemoApp.Model.Dal.Response.Base
 {
     /// <summary>
     /// Base object to all responses  

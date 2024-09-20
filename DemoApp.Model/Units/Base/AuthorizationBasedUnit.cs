@@ -1,5 +1,4 @@
 ﻿using DemoApp.Model.Units.Abstract;
-using Monee.Logic.DbLayer;
 
 namespace DemoApp.Model.Units.Base
 {

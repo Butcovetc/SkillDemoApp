@@ -8,15 +8,28 @@ namespace DemoApp.Model.Units.Base
     /// </summary>
     public abstract class RequestResultUnitAbstract<TResult, TRequest>: AuthorizationBasedUnit
         where TResult : ResponseBase, new()
-        where TRequest : ReqBase
+        where TRequest : RequestBase
     {
 
-        public RequestResultUnitAbstract() => Result = new TResult();
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="request">Request object</param>
+        public RequestResultUnitAbstract(TRequest request)
+        {
+            Request = request;
+            Result = new TResult();
+        }
+
+        /// <summary>
+        /// Request object
+        /// </summary>
+        protected TRequest Request { get; set; }
 
         /// <summary>
         /// Result
         /// </summary>
-        public TResult Result { get; set; }
+        public TResult Result { get; protected set; }
 
         /// <summary>
         /// Set result code success

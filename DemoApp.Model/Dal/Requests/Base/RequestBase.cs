@@ -3,7 +3,7 @@
     /// <summary>
     /// Base request object 
     /// </summary>
-    public class ReqBase
+    public class RequestBase
     {
         /// <summary>
         /// Store client Ip

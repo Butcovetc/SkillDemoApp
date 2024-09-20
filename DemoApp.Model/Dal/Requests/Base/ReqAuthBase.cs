@@ -1,6 +1,6 @@
 ﻿namespace DemoApp.Model.Dal.Requests.Base
 {
-    public class ReqAuthBase : ReqBase
+    public class ReqAuthBase : RequestBase
     {
 
     }

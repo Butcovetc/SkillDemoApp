@@ -24,6 +24,15 @@ namespace DemoApp.Model.Exceptions
             => ErrorCode = errorCode;
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="errorCode">Exception error code</param>
+        /// <param name="message">Exception error message</param>
+        /// <param name="innerException">Inner exception</param>
+        public DemoAppException(ErrorCodeEnum errorCode, string message, Exception innerException) : base(message, innerException)
+            => ErrorCode = errorCode;
+
+        /// <summary>
         /// Exception related error code
         /// </summary>
         public ErrorCodeEnum ErrorCode { get; protected set; }
