@@ -16,6 +16,6 @@ namespace DemoApp.Model.Dal.Response.Base
         /// <summary>
         /// Array of error's description
         /// </summary>
-        public List<String> ErrorDescriptions { get; set; }
+        public String ErrorDescription { get; set; }
     }
 }

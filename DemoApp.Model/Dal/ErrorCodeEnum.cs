@@ -21,6 +21,16 @@
         /// </summary>
         Success = 1,
 
+        /// <summary>
+        /// Missing argument exception 
+        /// </summary>
+        ArgumentMissingException = 10,
+
+        /// <summary>
+        /// Wrong argument value exception
+        /// </summary>
+        WrongArgumentException = 11,
+
 
         #region Account units error code's
 
