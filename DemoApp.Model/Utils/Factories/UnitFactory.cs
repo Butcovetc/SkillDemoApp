@@ -5,7 +5,7 @@ using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Units.Abstract;
 
-namespace DemoApp.Model.Factories
+namespace DemoApp.Model.Utils.Factories
 {
     /// <summary>
     /// Creates specific Unit of work
@@ -102,10 +102,10 @@ namespace DemoApp.Model.Factories
             }
             catch (Exception ex)
             {
-                throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!",ex);
+                throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!", ex);
             }
         }
-        
+
         public static UnitFactory Create()
             => new UnitFactory();
 

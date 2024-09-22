@@ -2,7 +2,7 @@
 using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
-using DemoApp.Model.Factories;
+using DemoApp.Model.Utils.Factories;
 using FluentAssertions;
 
 namespace DemoApp.MSTests

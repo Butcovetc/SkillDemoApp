@@ -16,16 +16,15 @@ namespace DemoApp.Model.Exceptions.Api
         /// Constuctor
         /// </summary>
         /// <param name="message">Message text</param>
-        public ArgumetMissingException(String message) : base(ErrorCodeEnum.ArgumentMissingException,message) { }
-
-
+        public ArgumetMissingException(String message) 
+            : base(ErrorCodeEnum.ArgumentMissingException,message) { }
 
         /// <summary>
         /// Throw an a ArgumentMissingException with specified message text
         /// </summary>
         /// <param name="obj">object to check</param>
         /// <exception cref="ArgumetMissingException">Exception message</exception>
-        public static void ThrowIfNull(Object obj)
+        public static void ThrowIfNull(Object? obj)
         {
             if (obj == null)
                 throw new ArgumetMissingException();

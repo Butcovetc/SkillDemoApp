@@ -5,15 +5,14 @@
     /// </summary>
     public class ResponseBase
     {
-
         /// <summary>
         /// Unit result error code 
         /// </summary>
-        public ErrorCodeEnum Error { get; set; }
+        public ErrorCodeEnum Error { get; set; } = ErrorCodeEnum.NotSet;
 
         /// <summary>
         /// Array of error's description
         /// </summary>
-        public String ErrorDescription { get; set; }
+        public String ErrorDescription { get; set; } = String.Empty;
     }
 }
