@@ -1,4 +1,6 @@
-﻿namespace DemoApp.Model.Dal.Requests.Base
+﻿using System.Text.Json.Serialization;
+
+namespace DemoApp.Model.Dal.Requests.Base
 {
     /// <summary>
     /// Base request object 
@@ -8,6 +10,7 @@
         /// <summary>
         /// Store client Ip
         /// </summary>
+        [JsonIgnore]//To hide field from swagger
         public string Ip { get; set; }
     }
 }

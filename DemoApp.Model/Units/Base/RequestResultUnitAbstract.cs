@@ -1,12 +1,13 @@
 ﻿using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response.Base;
+using DemoApp.Model.Units.Abstract;
 
 namespace DemoApp.Model.Units.Base
 {
     /// <summary>
     /// Wrapper that adds request and result 
     /// </summary>
-    public abstract class RequestResultUnitAbstract<TResult, TRequest>: AuthorizationBasedUnit
+    public abstract class RequestResultUnitAbstract<TResult, TRequest>: TemplateMethodBaseUnit
         where TResult : ResponseBase, new()
         where TRequest : RequestBase
     {

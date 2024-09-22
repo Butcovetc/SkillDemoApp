@@ -6,13 +6,13 @@ namespace DemoApp.Model.Exceptions.Critical
     /// <summary>
     /// Application kernel exception
     /// </summary>
-    public class KernerErrorException : BaseCriticalException
+    public class KernerException : BaseCriticalException
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="message">Message</param>
-        public KernerErrorException(string message) 
+        public KernerException(string message) 
             : base(ErrorCodeEnum.CriticalError, message)
         {
         }
@@ -21,7 +21,7 @@ namespace DemoApp.Model.Exceptions.Critical
         /// Constructor
         /// </summary>
         /// <param name="message">Message</param>
-        public KernerErrorException(String message,Exception ex)
+        public KernerException(String message,Exception ex)
             : base(ErrorCodeEnum.CriticalError, message,ex)
         {
         }

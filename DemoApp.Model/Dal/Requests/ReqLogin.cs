@@ -10,11 +10,11 @@ namespace DemoApp.Model.Dal.Requests
         /// <summary>
         /// Login
         /// </summary>
-        public String Login { get; set; }
+        public String? Login { get; set; }
 
         /// <summary>
         /// Password
         /// </summary>
-        public String Password { get; set; }
+        public String? Password { get; set; }
     }
 }

@@ -39,7 +39,7 @@ namespace Monee.RestApi.Controllers.Base
             where TRequest: RequestBase
         {
             if (request == null)
-                throw new KernerErrorException("Nullable request object");
+                throw new KernerException("Nullable request object");
 
             if (String.IsNullOrEmpty(request.Ip)
                 && HttpContext!=null
@@ -76,7 +76,7 @@ namespace Monee.RestApi.Controllers.Base
                 
                     var unit = unitObj as TUnitOfWorlk;
                     if (unit == null)
-                        throw new KernerErrorException($"Unit {typeof(TUnitOfWorlk).GetType()} can't be used!");
+                        throw new KernerException($"Unit {typeof(TUnitOfWorlk).GetType()} can't be used!");
 
                     return unit.Result;
                 }

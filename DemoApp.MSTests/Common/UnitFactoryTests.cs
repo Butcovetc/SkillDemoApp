@@ -59,7 +59,7 @@ namespace DemoApp.MSTests
         }
 
         [TestMethod]
-        [ExpectedException (typeof(KernerErrorException))]
+        [ExpectedException (typeof(KernerException))]
         public void UnitFactoryEmptyConstructorTypeTest()
         {
             var unit = UnitFactory
@@ -71,7 +71,7 @@ namespace DemoApp.MSTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(KernerErrorException))]
+        [ExpectedException(typeof(KernerException))]
         public void UnitFactoryWrongRequestTypeTest()
         {
             var unit = UnitFactory

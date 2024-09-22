@@ -3,7 +3,7 @@
     /// <summary>
     /// Base template method unit. Methoda firing order Init -> Proceed -> CleanUp
     /// </summary>
-    public abstract class TemplateMethodUnitAbstract 
+    public abstract class TemplateMethodBaseUnit 
     {
         /// <summary>
         /// Invoke first. Befor Proceed

@@ -59,7 +59,7 @@ namespace DemoApp.Model.Utils.Factories
         /// <typeparam name="TUnit">Unit type</typeparam>
         /// <returns>Factory object</returns>
         public UnitFactory SetUnitType<TUnit>()
-            where TUnit : TemplateMethodUnitAbstract
+            where TUnit : TemplateMethodBaseUnit
         {
             _unitType = typeof(TUnit);
             return this;
@@ -70,7 +70,7 @@ namespace DemoApp.Model.Utils.Factories
         /// </summary>
         /// <param name="request">Unit request object</param>
         /// <returns></returns>
-        /// <exception cref="KernerErrorException">In case in unit can't be created</exception>
+        /// <exception cref="KernerException">In case in unit can't be created</exception>
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
         public object CreateUnit(object request)
             => CreateUnit([request]);
@@ -80,7 +80,7 @@ namespace DemoApp.Model.Utils.Factories
         /// </summary>
         /// <param name="args">Constructor args</param>
         /// <returns></returns>
-        /// <exception cref="KernerErrorException">In case in unit can't be created</exception>
+        /// <exception cref="KernerException">In case in unit can't be created</exception>
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
         public object CreateUnit(object[] args)
         {
@@ -94,7 +94,7 @@ namespace DemoApp.Model.Utils.Factories
 
                 var unitObj = Activator.CreateInstance(_unitType, args: args);
 
-                return unitObj ?? throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!");
+                return unitObj ?? throw new KernerException($"Unit {_unitType.GetType()} can't be created!");
             }
             catch (BaseApiException)
             {
@@ -102,7 +102,7 @@ namespace DemoApp.Model.Utils.Factories
             }
             catch (Exception ex)
             {
-                throw new KernerErrorException($"Unit {_unitType.GetType()} can't be created!", ex);
+                throw new KernerException($"Unit {_unitType.GetType()} can't be created!", ex);
             }
         }
 

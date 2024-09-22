@@ -14,8 +14,8 @@ namespace DemoApp.Model.Utils.UserSettings
         public ConnectionStrings? ConnectionStrings { get; set; }
 
         /// <summary>
-        /// Some app key values
+        /// Some app key values. Created for an example of usage
         /// </summary>
-        public String? SomeAppKey { get; set; }
+        public String? SomeSampleAppKey { get; set; }
     }
 }

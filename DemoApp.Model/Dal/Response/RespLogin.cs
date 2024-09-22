@@ -7,7 +7,9 @@ namespace DemoApp.Model.Dal.Response
     /// </summary>
     public class RespLogin: ResponseBase
     {
-        public String Token { get; set; }
-
+        /// <summary>
+        /// Authorization token
+        /// </summary>
+        public String? Token { get; set; }
     }
 }

@@ -8,6 +8,6 @@
         /// <summary>
         /// Demo app databsae connection string
         /// </summary>
-        public String DemoAppDbConnectionString { get; set; } = String.Empty;
+        public String? DemoAppDbConnectionString { get; set; } 
     }
 }
