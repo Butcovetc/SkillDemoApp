@@ -16,7 +16,7 @@ namespace DemoApp.Model.DbContext.Entity
         /// <summary>
         /// Password hash
         /// </summary>
-        public String PassHash { get; set; }
+        public String? PassHash { get; set; }
 
         /// <summary>
         /// User email

@@ -36,15 +36,15 @@ namespace DemoApp.MSTests.Account
                 _scope.Dispose();
         }
 
-
         [TestMethod]
         public void AccountLoginUnit_Success_Test()
         {
             var context = Context;
+            var pass = Faker.StringFaker.AlphaNumeric(10);
             var user = new ApplicationUserEntity
             {
-                Email = Faker.InternetFaker.Email(),
-                PassHash = CryptoFacade.EncryptPass(Faker.StringFaker.AlphaNumeric(10))
+                Login = Faker.InternetFaker.Email(),
+                PassHash = CryptoFacade.EncryptPass(pass)
             };
 
             context.Users.Add(user);
@@ -53,14 +53,73 @@ namespace DemoApp.MSTests.Account
 
             var reqLogin = new ReqLogin
             {
-                Login = "acount@gmail.com",
-                Password = "password"
+                Login = user.Login,
+                Password = pass
             };
 
             var result = _service.LoginAsync(reqLogin).Result;  
 
             result.Should().NotBeNull();
             result.Error.Should().Be(Model.Dal.ErrorCodeEnum.Success);
+            result.Token.Should().NotBeNullOrWhiteSpace();
+        }
+
+        [TestMethod]
+        public void AccountLoginUnit_WrongPass_Test()
+        {
+            var context = Context;
+            var pass = Faker.StringFaker.AlphaNumeric(10);
+            var user = new ApplicationUserEntity
+            {
+                Login = Faker.InternetFaker.Email(),
+                PassHash = CryptoFacade.EncryptPass(pass)
+            };
+
+            context.Users.Add(user);
+
+            context.SaveChanges();
+
+            var reqLogin = new ReqLogin
+            {
+                Login = user.Login,
+                Password = Faker.StringFaker.AlphaNumeric(10)
+            };
+
+            var result = _service.LoginAsync(reqLogin).Result;
+
+            result.Should().NotBeNull();
+            result.Error.Should().Be(Model.Dal.ErrorCodeEnum.LoginNotFound);
+            result.Token.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void AccountLoginUnit_EmptyPass_Test()
+        {
+            var reqLogin = new ReqLogin
+            {
+                Login = Faker.InternetFaker.Email(),
+            };
+
+            var result = _service.LoginAsync(reqLogin).Result;
+
+            result.Should().NotBeNull();
+            result.Error.Should().Be(Model.Dal.ErrorCodeEnum.ArgumentMissingException);
+            result.Token.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void AccountLoginUnit_EmptyLogin_Test()
+        {
+            var reqLogin = new ReqLogin
+            {
+                Password = Faker.InternetFaker.Email(),
+            };
+
+            var result = _service.LoginAsync(reqLogin).Result;
+
+            result.Should().NotBeNull();
+            result.Error.Should().Be(Model.Dal.ErrorCodeEnum.ArgumentMissingException);
+            result.Token.Should().BeNull();
         }
     }
 }

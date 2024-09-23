@@ -52,7 +52,7 @@ namespace DemoApp.MSTests
 
 
         [TestMethod]
-        [ExpectedException(typeof(UserNotFoundOrPasswordAreNotValidException))]
+        [ExpectedException(typeof(ArgumetMissingException))]
         public void UnitFactory_MissingRequestTest()
         {
             var unit = UnitFactory
@@ -63,7 +63,7 @@ namespace DemoApp.MSTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UserNotFoundOrPasswordAreNotValidException))]
+        [ExpectedException(typeof(ArgumetMissingException))]
         public void UnitFactory_MissingResultTest()
         {
             var unit = UnitFactory
@@ -74,7 +74,7 @@ namespace DemoApp.MSTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UserNotFoundOrPasswordAreNotValidException))]
+        [ExpectedException(typeof(ArgumetMissingException))]
         public void UnitFactory_MissingUnitTest()
         {
             var unit = UnitFactory
