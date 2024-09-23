@@ -1,25 +1,39 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using DemoApp.ConsoleUI;
 using DemoApp.ConsoleUI.Facades;
-using DemoApp.ConsoleUI.Models;
-using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console;
 
-InjectionFacade.ConfigureServiceProvider();
+var behavior = new ConsoleUIBehaviourFacade();
+behavior.Init();
 
-var accountService = InjectionFacade.ServiceProvider.GetRequiredService<AccountClient>();
-
-var request = new ReqLogin
+var continueFlag = true;
+do
 {
-    Login = "Tester",
-    Password = "TestPass"
-};
 
-var result = accountService.Login(request);
+    Console.WriteLine();
+    Console.WriteLine();
+
+    switch (behavior.SelectAction())
+    {
+        case SelectionConstants.Registration:
+            behavior.Registration();
+            break;
+        case SelectionConstants.Login:
+            behavior.Login();
+            break;
+        case SelectionConstants.Check:
+            behavior.CheckDataBase();
+            break;
+        case SelectionConstants.Exit:
+            continueFlag = false;
+            break;
+    }
+} while (continueFlag);
 
 
-Console.WriteLine($"Authorization code:{result.Value.Error}");
-Console.WriteLine($"Authorization code description:{result.Value.ErrorDescription}");
 
+
+
+Console.WriteLine();
 Console.WriteLine("Push any key to continue...");
 Console.ReadKey();

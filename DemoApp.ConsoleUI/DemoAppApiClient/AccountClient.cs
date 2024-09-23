@@ -106,9 +106,38 @@ namespace DemoApp.ConsoleUI
             }
         }
 
-        internal object Login(object request)
+        /// <param name="body"> The <see cref="ReqRegister"/> to use. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual async Task<Response<RespRegistration>> RegisterAsync(ReqRegister body = null, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            using var scope = _clientDiagnostics.CreateScope("AccountClient.Register");
+            scope.Start();
+            try
+            {
+                return await RestClient.RegisterAsync(body, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
+        }
+
+        /// <param name="body"> The <see cref="ReqRegister"/> to use. </param>
+        /// <param name="cancellationToken"> The cancellation token to use. </param>
+        public virtual Response<RespRegistration> Register(ReqRegister body = null, CancellationToken cancellationToken = default)
+        {
+            using var scope = _clientDiagnostics.CreateScope("AccountClient.Register");
+            scope.Start();
+            try
+            {
+                return RestClient.Register(body, cancellationToken);
+            }
+            catch (Exception e)
+            {
+                scope.Failed(e);
+                throw;
+            }
         }
     }
 }

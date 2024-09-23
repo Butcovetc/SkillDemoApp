@@ -43,5 +43,15 @@ namespace DemoApp.ConsoleUI.Models
         {
             return new AccountItem(login, email);
         }
+
+        /// <summary> Initializes a new instance of <see cref="Models.RespRegistration"/>. </summary>
+        /// <param name="error"></param>
+        /// <param name="errorDescription"></param>
+        /// <param name="id"></param>
+        /// <returns> A new <see cref="Models.RespRegistration"/> instance for mocking. </returns>
+        public static RespRegistration RespRegistration(ErrorCodeEnum? error = null, string errorDescription = null, int? id = null)
+        {
+            return new RespRegistration(error, errorDescription, id);
+        }
     }
 }

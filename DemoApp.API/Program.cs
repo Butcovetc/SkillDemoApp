@@ -1,5 +1,6 @@
 ﻿using DemoApp.Model.Services;
 using DemoApp.Model.Services.Interfaces;
+using DemoApp.Model.Utils;
 using DemoApp.Model.Utils.UserSettings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 //Bind user secrets to a object
 UserSecretsRoot userSecret = new();
 builder.Configuration.Bind(userSecret);
+
+CryptoFacade.SetSalt(userSecret.UserPassWordEncryptionSalt);
 
 builder.Services.AddScoped<ILogger>(t =>LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger("DemoApp"));
 
