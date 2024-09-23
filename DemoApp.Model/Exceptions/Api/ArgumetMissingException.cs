@@ -7,10 +7,6 @@ namespace DemoApp.Model.Exceptions.Api
     /// </summary>
     internal class ArgumetMissingException : BaseApiException
     {
-        /// <summary>
-        /// Constuctor
-        /// </summary>
-        public ArgumetMissingException() : base(ErrorCodeEnum.ArgumentMissingException) { }
 
         /// <summary>
         /// Constuctor
@@ -36,7 +32,7 @@ namespace DemoApp.Model.Exceptions.Api
         public static void ThrowIfNullOrEmpty(String? obj,String message)
         {
             if (obj == null)
-                throw new ArgumetMissingException();
+                throw new ArgumetMissingException(message);
         }
 
         /// <summary>

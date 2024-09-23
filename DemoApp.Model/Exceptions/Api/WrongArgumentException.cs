@@ -14,11 +14,5 @@ namespace DemoApp.Model.Exceptions.Api
         public WrongArgumentException(string message) 
             : base(ErrorCodeEnum.WrongArgumentException,message) 
         { }
-
-        /// <summary>
-        /// Constuctor
-        /// </summary>
-        public WrongArgumentException() : base(ErrorCodeEnum.WrongArgumentException)
-        { }
     }
 }

@@ -10,6 +10,7 @@ namespace DemoApp.Model.Exceptions.Api
         /// <summary>
         /// Constuctor
         /// </summary>
-        public UserNotFoundOrPasswordAreNotValidException() : base(ErrorCodeEnum.LoginNotFound) { }
+        public UserNotFoundOrPasswordAreNotValidException() 
+            : base(ErrorCodeEnum.LoginNotFound, "User not found or password are incorect!") { }
     }
 }

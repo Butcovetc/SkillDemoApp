@@ -7,13 +7,6 @@ namespace DemoApp.Model.Exceptions
     /// </summary>
     internal class BaseApiException : DemoAppException
     {
-        /// <summary>
-        /// Constuctor
-        /// </summary>
-        /// <param name="errorCode">Error code</param>
-        public BaseApiException(ErrorCodeEnum errorCode) : base(errorCode)
-        {
-        }
 
         /// <summary>
         /// Constructor

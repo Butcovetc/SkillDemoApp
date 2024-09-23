@@ -21,5 +21,5 @@ var result = accountService.Login(request);
 Console.WriteLine($"Authorization code:{result.Value.Error}");
 Console.WriteLine($"Authorization code description:{result.Value.ErrorDescription}");
 
-
-
+Console.WriteLine("Push any key to continue...");
+Console.ReadKey();

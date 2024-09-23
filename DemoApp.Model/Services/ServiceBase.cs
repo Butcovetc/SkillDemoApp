@@ -73,14 +73,13 @@ namespace DemoApp.Model.Services
             {
                 return new TResult
                 {
-                    ErrorDescription = (ex.InnerException != null)
-                        ? ex.Message + ex.InnerException.Message
-                        : ex.Message,
+                    ErrorDescription = ex.Message,
                     Error = ex.ErrorCode,
                 };
             }
             catch (BaseCriticalException criticatlException)
             {
+                //TODO:Trace and log data for furture analisis
                 return new TResult
                 {
                     ErrorDescription = (criticatlException.InnerException != null)
@@ -91,6 +90,7 @@ namespace DemoApp.Model.Services
             }
             catch (Exception ex)
             {
+                //TODO:Trace and log data for furture analisis
                 return new TResult
                 {
                     ErrorDescription = ex.InnerException != null ? ex.InnerException.Message : ex.Message,
