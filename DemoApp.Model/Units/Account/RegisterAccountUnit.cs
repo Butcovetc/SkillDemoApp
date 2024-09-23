@@ -1,5 +1,6 @@
 ﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Response.Account;
+using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.DbContext.Entity;
 using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Units.Base;
@@ -12,13 +13,13 @@ namespace DemoApp.Model.Units.Account
     /// <summary>
     /// authorize user
     /// </summary>
-    internal class AccountLoginUnit : AuthorizationBasedUnit<RespLogin, ReqLogin>
+    internal class RegisterAccountUnit : AuthorizationBasedUnit<RespRegistration, ReqRegister>
     {
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="request">Request object</param>
-        public AccountLoginUnit(ILogger logger, DataBaseContext context, ReqLogin request) 
+        public RegisterAccountUnit(ILogger logger, DataBaseContext context, ReqRegister request) 
             : base(logger, context, request) {}
 
         /// <summary>
@@ -30,35 +31,36 @@ namespace DemoApp.Model.Units.Account
         {
             base.Init();
 
-            ArgumetMissingException.ThrowIfNullOrEmpty(Request.Login);
-
-            ArgumetMissingException.ThrowIfNullOrEmpty(Request.Password);
+            ArgumetMissingException.ThrowIfNullOrEmpty(Request.Login,"Login should contains proper data");
+            ArgumetMissingException.ThrowIfNullOrEmpty(Request.Password, "Password should contains proper data");
+            ArgumetMissingException.ThrowIfNullOrEmpty(Request.Email, "Email should contains proper data");
 
             _user = Context
                 .Users
                 .FirstOrDefault(x => x.Login == Request.Login);
 
-            if (_user == null)
-                throw new UserNotFoundOrPasswordAreNotValidException();
+            if (_user != null)
+                throw new WrongArgumentException($"User with login '{Request.Login}' already exists");
         }
 
         protected override void Proceed()
         {
             base.Proceed();
 
-            var encryptedPass = CryptoFacade.EncryptPass(Request.Password);
+            var user = new ApplicationUserEntity
+            {
+                Email = Request.Email,
+                Login = Request.Login,
+                PassHash = CryptoFacade.EncryptPass(Request.Password),
+            };
 
-            if (encryptedPass != _user.PassHash)
-                throw new UserNotFoundOrPasswordAreNotValidException();
-
-            _user.SessionKeyUniq = Guid.NewGuid();
+            Context.Users.Add(user);    
 
             Context.SaveChanges();
-            
-            Result.Token = PackToken(_user);
+
+            Result.Id = user.Id;
             
             SetSuccess();
-        
         }
     }
 }

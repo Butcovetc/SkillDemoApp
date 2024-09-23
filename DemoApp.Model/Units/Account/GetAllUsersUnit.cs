@@ -1,5 +1,6 @@
 ﻿using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response;
+using DemoApp.Model.Dal.Response.Account;
 using DemoApp.Model.Units.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

@@ -1,15 +1,15 @@
 ﻿using DemoApp.Model.Dal.Response.Base;
 
-namespace DemoApp.Model.Dal.Response
+namespace DemoApp.Model.Dal.Response.Account
 {
     /// <summary>
     /// Response login object
     /// </summary>
-    public class RespLogin: ResponseBase
+    public class RespLogin : ResponseBase
     {
         /// <summary>
         /// Authorization token
         /// </summary>
-        public String? Token { get; set; }
+        public string? Token { get; set; }
     }
 }

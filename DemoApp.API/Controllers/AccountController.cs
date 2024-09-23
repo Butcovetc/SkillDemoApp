@@ -1,6 +1,8 @@
 ﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response;
+using DemoApp.Model.Dal.Response.Account;
+using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Monee.RestApi.Controllers.Base;
@@ -45,5 +47,15 @@ namespace DemoApp.API.Controllers
         [Route("List")]
         public Task<ResponseList<AccountItem>> GetAllAccounts([FromBody] RequestTokenBased request)
             => _accountService.GetAllAccountsAsync(request);
+
+        /// <summary>
+        /// Get all accounts
+        /// </summary>
+        /// <param name="request">Request object</param>
+        /// <returns>Users collection list</returns>
+        [HttpPost]
+        [Route("Register")]
+        public Task<RespRegistration> Register([FromBody] ReqRegister request)
+            => _accountService.Register(request);
     }
 }

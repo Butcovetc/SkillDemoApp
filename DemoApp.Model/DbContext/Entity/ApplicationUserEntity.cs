@@ -14,14 +14,14 @@ namespace DemoApp.Model.DbContext.Entity
         public String? Login { get; set; }
 
         /// <summary>
-        /// Password hash
-        /// </summary>
-        public String? PassHash { get; set; }
-
-        /// <summary>
         /// User email
         /// </summary>
         public String? Email { get; set; }
+
+        /// <summary>
+        /// Password hash
+        /// </summary>
+        public String? PassHash { get; set; }
 
         /// <summary>
         /// Used to kreate session

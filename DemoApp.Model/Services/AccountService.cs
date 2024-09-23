@@ -1,6 +1,8 @@
 ﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response;
+using DemoApp.Model.Dal.Response.Account;
+using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.Services.Interfaces;
 using DemoApp.Model.Units.Account;
 using Microsoft.Extensions.Logging;
@@ -29,6 +31,14 @@ namespace DemoApp.Model.Services
         /// <returns>Result list</returns>
         public Task<ResponseList<AccountItem>> GetAllAccountsAsync(RequestTokenBased request)
             => RunAsync<ResponseList<AccountItem>, GetAllUsersUnit, RequestTokenBased>(request);
+
+        /// <summary>
+        /// Register account
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public Task<RespRegistration> Register(ReqRegister request)
+            => RunAsync<RespRegistration, RegisterAccountUnit, ReqRegister>(request);
 
         /// <summary>
         /// User login method

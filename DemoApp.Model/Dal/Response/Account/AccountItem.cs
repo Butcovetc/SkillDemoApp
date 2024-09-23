@@ -1,16 +1,15 @@
-﻿
-namespace DemoApp.Model.Dal.Response
+﻿namespace DemoApp.Model.Dal.Response.Account
 {
     public class AccountItem
     {
         /// <summary>
         /// User login
         /// </summary>
-        public String? Login { get; set; }
+        public string? Login { get; set; }
 
         /// <summary>
         /// User email
         /// </summary>
-        public String? Email { get; set; }
+        public string? Email { get; set; }
     }
 }
