@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using DemoApp.Model.DbContext;
 using DemoApp.Model.Services;
 using DemoApp.Model.Services.Interfaces;
 using DemoApp.Model.Utils;
 using DemoApp.Model.Utils.UserSettings;
+using DemoApp.MSTests.Common.Mocks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Monee.Logic.DbLayer;
 
 namespace DemoApp.MSTests
@@ -16,7 +17,7 @@ namespace DemoApp.MSTests
     /// Base test class
     /// </summary>
     [TestClass]
-    internal class TestInitializerBase
+    public class TestInitializerBase
     {
         /// <summary>
         /// Service provider field
@@ -78,9 +79,8 @@ namespace DemoApp.MSTests
                 options.UseInMemoryDatabase("TestDb"));
 
 
-            services.AddSingleton<IAccountService>(o =>
-                new AccountService()
-            );
+            services.AddSingleton<IAccountService,AccountService>();
+            services.AddSingleton<ILogger,TraceLogger>();
 
             ServiceProvider = services.BuildServiceProvider();
         }

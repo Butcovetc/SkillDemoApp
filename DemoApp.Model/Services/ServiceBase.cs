@@ -5,6 +5,8 @@ using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Exceptions;
 using DemoApp.Model.Units.Base;
 using DemoApp.Model.Utils.Factories;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
 
 namespace DemoApp.Model.Services
 {
@@ -13,6 +15,19 @@ namespace DemoApp.Model.Services
     /// </summary>
     internal abstract class ServiceBase
     {
+        ILogger _logger;
+        DataBaseContext _context;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger">Logger</param>
+        /// <param name="context">Database context</param>
+        protected ServiceBase(ILogger logger, DataBaseContext context) {
+            _logger = logger;
+            _context = context;
+        }
+
         /// <summary>
         /// Run TUnitOfWorlk with TRequest type & TResult. TUnitOfWorlk will be automatically created and excecuted
         /// </summary>
@@ -44,7 +59,7 @@ namespace DemoApp.Model.Services
                     .SetResultType<TResult>()
                     .SetRequestType<TRequest>()
                     .SetUnitType<TUnitOfWorlk>()
-                    .CreateUnit(request);
+                    .CreateUnit(_logger, _context, request);
 
                 var unit = unitObj as TUnitOfWorlk;
                 if (unit == null)

@@ -4,6 +4,8 @@ using DemoApp.Model.Exceptions;
 using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Units.Abstract;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
 
 namespace DemoApp.Model.Utils.Factories
 {
@@ -90,8 +92,8 @@ namespace DemoApp.Model.Utils.Factories
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
-        public object CreateUnit()
-            => CreateUnit([]);
+        public object CreateUnit(ILogger logger, DataBaseContext context)
+            => CreateUnit(logger, context,[]);
 
         /// <summary>
         /// Create's unit of work object base on params
@@ -100,8 +102,8 @@ namespace DemoApp.Model.Utils.Factories
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
-        public object CreateUnit(object request)
-            => CreateUnit([request]);
+        public object CreateUnit(ILogger logger, DataBaseContext context, object request)
+            => CreateUnit(logger, context,[request]);
 
         /// <summary>
         /// Create's unit of work object base on params
@@ -110,7 +112,7 @@ namespace DemoApp.Model.Utils.Factories
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
         /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
-        public object CreateUnit(object[] args)
+        public object CreateUnit(ILogger logger, DataBaseContext context, object[] args)
         {
             try
             {
@@ -120,7 +122,11 @@ namespace DemoApp.Model.Utils.Factories
 
                 ArgumetMissingException.ThrowIfNull(_requestType);
 
-                _requestObjects.AddRange(args);
+                _requestObjects.Insert(0,logger);//First param
+
+                _requestObjects.Insert(1,context);//Secon one
+
+                _requestObjects.AddRange(args);//Request and others
 
                 var unitObj = Activator.CreateInstance(_unitType, args: _requestObjects.ToArray());
 

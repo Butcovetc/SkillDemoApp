@@ -1,6 +1,8 @@
 ﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Response;
 using DemoApp.Model.Units.Base;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
 
 namespace DemoApp.Model.Units.Account
 {
@@ -13,7 +15,8 @@ namespace DemoApp.Model.Units.Account
         /// Constructor 
         /// </summary>
         /// <param name="request">Request object</param>
-        public AccountLoginUnit(ReqLogin request) : base(request) {}
+        public AccountLoginUnit(ILogger logger, DataBaseContext context, ReqLogin request) 
+            : base(logger, context, request) {}
 
         protected override void Init()
         {

@@ -6,7 +6,7 @@ namespace DemoApp.Model.Utils.UserSettings
     /// <summary>
     /// Stores user secrets setting 
     /// </summary>
-    internal class UserSecretsRoot
+    public class UserSecretsRoot
     {
         /// <summary>
         /// Connection strings

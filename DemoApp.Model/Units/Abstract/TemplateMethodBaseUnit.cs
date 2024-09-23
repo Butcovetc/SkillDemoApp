@@ -1,10 +1,34 @@
-﻿namespace DemoApp.Model.Units.Abstract
+﻿using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
+
+namespace DemoApp.Model.Units.Abstract
 {
     /// <summary>
     /// Base template method unit. Methoda firing order Init -> Proceed -> CleanUp
     /// </summary>
-    public abstract class TemplateMethodBaseUnit 
+    internal abstract class TemplateMethodBaseUnit 
     {
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="context">Databnase context</param>
+        public TemplateMethodBaseUnit(ILogger logger, DataBaseContext context)
+        {
+            Context = context;
+            Logger = logger;
+        }
+
+        /// <summary>
+        /// Logger
+        /// </summary>
+        protected ILogger Logger { get; private set; }
+
+        /// <summary>
+        /// Context
+        /// </summary>
+        protected DataBaseContext Context { get; private set; }
+
         /// <summary>
         /// Invoke first. Befor Proceed
         /// </summary>
@@ -16,7 +40,7 @@
         protected virtual void Proceed() { }
 
         /// <summary>
-        /// Invokes last one. 
+        /// Invokes after procced. 
         /// </summary>
         protected virtual void CleanUp() { }
 

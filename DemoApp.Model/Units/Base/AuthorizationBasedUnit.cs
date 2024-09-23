@@ -1,6 +1,8 @@
 ﻿using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.DbContext.Entity;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
 using static DemoApp.Model.Utils.CryptoFacade;
 
 namespace DemoApp.Model.Units.Base
@@ -12,7 +14,14 @@ namespace DemoApp.Model.Units.Base
         where TResult : ResponseBase, new()
         where TRequest : RequestTokenBased
     {
-        public AuthorizationBasedUnit(TRequest request) : base(request)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger">Logger</param>
+        /// <param name="context">Context</param>
+        /// <param name="request">Request object</param>
+        public AuthorizationBasedUnit(ILogger logger, DataBaseContext context,TRequest request)
+            : base(logger, context, request)
         {
         }
 

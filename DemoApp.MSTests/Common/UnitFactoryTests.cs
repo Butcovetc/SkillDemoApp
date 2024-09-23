@@ -4,12 +4,25 @@ using DemoApp.Model.Exceptions.Api;
 using DemoApp.Model.Exceptions.Critical;
 using DemoApp.Model.Utils.Factories;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
+using Moq;
 
 namespace DemoApp.MSTests
 {
     [TestClass]
     public partial class UnitFactoryTests
     {
+        private DataBaseContext _context;
+        private ILogger _logger;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            _context = Mock.Of<DataBaseContext>();
+            _logger = Mock.Of<ILogger>();
+        }
+
         [TestMethod]
         public void UnitFactory_SuccessTest()
         {
@@ -18,20 +31,20 @@ namespace DemoApp.MSTests
                 .SetRequestType<RequestBase>()
                 .SetResultType<ResponseBase>()
                 .SetUnitType<UnitTestFactoryMokUnit>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context, new RequestBase());
 
             unit.Should().NotBeNull(); 
         }
 
         [TestMethod]
-        public void UnitFactory_CreateEmptyTest()
+        public void UnitFactory_CreateWithoutRequestTest()
         {
             var unit = UnitFactory
                 .Create()
                 .AddRequestObject(new RequestBase())
                 .SetResultType<ResponseBase>()
                 .SetUnitType<UnitTestFactoryMokUnit>()
-                .CreateUnit();
+                .CreateUnit(_logger, _context);
 
             unit.Should().NotBeNull();
         }
@@ -46,7 +59,7 @@ namespace DemoApp.MSTests
                 .Create()
                 .SetResultType<ResponseBase>()
                 .SetUnitType<UnitTestFactoryMokUnit>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context,new RequestBase());
         }
 
         [TestMethod]
@@ -57,7 +70,7 @@ namespace DemoApp.MSTests
                 .Create()
                 .SetRequestType<RequestBase>()
                 .SetUnitType<UnitTestFactoryMokUnit>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context,new RequestBase());
         }
 
         [TestMethod]
@@ -68,7 +81,7 @@ namespace DemoApp.MSTests
                 .Create()
                 .SetResultType<ResponseBase>()
                 .SetRequestType<RequestBase>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context,new RequestBase());
         }
 
         [TestMethod]
@@ -80,7 +93,7 @@ namespace DemoApp.MSTests
                 .SetRequestType<RequestBase>()
                 .SetResultType<ResponseBase>()
                 .SetUnitType<UnitTestFactory_EmptyContructor_MokUnit>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context,new RequestBase());
         }
 
         [TestMethod]
@@ -92,7 +105,7 @@ namespace DemoApp.MSTests
                 .SetRequestType<RequestBase>()
                 .SetResultType<ResponseBase>()
                 .SetUnitType<UnitTestFactory_EmptyContructor_MokUnit>()
-                .CreateUnit(new RequestBase());
+                .CreateUnit(_logger, _context,new RequestBase());
         }
     }
 }

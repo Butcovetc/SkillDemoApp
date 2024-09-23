@@ -1,6 +1,8 @@
 ﻿using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response.Base;
 using DemoApp.Model.Units.Abstract;
+using Microsoft.Extensions.Logging;
+using Monee.Logic.DbLayer;
 
 namespace DemoApp.Model.Units.Base
 {
@@ -16,7 +18,8 @@ namespace DemoApp.Model.Units.Base
         /// Constructor
         /// </summary>
         /// <param name="request">Request object</param>
-        public RequestResultUnitAbstract(TRequest request)
+        public RequestResultUnitAbstract(ILogger logger, DataBaseContext context,TRequest request)
+            :base(logger, context)
         {
             Request = request;
             Result = new TResult();

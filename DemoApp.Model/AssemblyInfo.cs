@@ -19,3 +19,6 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("DemoApp.MSTests")]
 [assembly: InternalsVisibleTo("DemoApp.API")]
+
+//to be able to use injections
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
