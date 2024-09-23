@@ -6,7 +6,7 @@ namespace DemoApp.Model.Dal.Requests
     /// <summary>
     /// Account login request object
     /// </summary>
-    internal class ReqLogin : RequestTokenBased
+    public class ReqLogin : RequestTokenBased
     {
         //hiding token from swagger
         [JsonIgnore]

@@ -27,7 +27,7 @@ namespace DemoApp.Model.Services
         /// </summary>
         /// <param name="request">Request token based</param>
         /// <returns>Result list</returns>
-        public Task<ResponseList<AccountItem>> GetAllUsers(RequestTokenBased request)
+        public Task<ResponseList<AccountItem>> GetAllAccountsAsync(RequestTokenBased request)
             => RunAsync<ResponseList<AccountItem>, GetAllUsersUnit, RequestTokenBased>(request);
 
         /// <summary>

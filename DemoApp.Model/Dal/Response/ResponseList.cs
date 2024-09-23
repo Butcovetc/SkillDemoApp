@@ -10,7 +10,7 @@ namespace DemoApp.Model.Dal.Response
     /// <summary>
     /// Response list
     /// </summary>
-    internal class ResponseList<TListItem> : ResponseBase
+    public class ResponseList<TListItem> : ResponseBase
     {
         /// <summary>
         /// Items

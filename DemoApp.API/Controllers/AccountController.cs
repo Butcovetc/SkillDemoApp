@@ -1,4 +1,5 @@
 ﻿using DemoApp.Model.Dal.Requests;
+using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response;
 using DemoApp.Model.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace DemoApp.API.Controllers
     /// <summary>
     /// Account controller. Responde for account related actions
     /// </summary>
-    internal class AccountController : BaseApiController
+    public class AccountController : BaseApiController
     {
         /// <summary>
         /// Account service
@@ -30,7 +31,18 @@ namespace DemoApp.API.Controllers
         /// <param name="request">Request object</param>
         /// <returns>Loging result object</returns>
         [HttpPost]
+        [Route("Login")]
         public Task<RespLogin> Login([FromBody] ReqLogin request)
             => _accountService.LoginAsync(request);
+
+        /// <summary>
+        /// Get all accounts
+        /// </summary>
+        /// <param name="request">Request object</param>
+        /// <returns>Users collection list</returns>
+        [HttpPost]
+        [Route("List")]
+        public Task<ResponseList<AccountItem>> GetAllAccounts([FromBody] RequestTokenBased request)
+            => _accountService.GetAllAccountsAsync(request);
     }
 }

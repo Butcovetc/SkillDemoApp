@@ -3,7 +3,7 @@
     /// <summary>
     /// Base object to all responses  
     /// </summary>
-    internal class ResponseBase
+    public class ResponseBase
     {
         /// <summary>
         /// Unit result error code 

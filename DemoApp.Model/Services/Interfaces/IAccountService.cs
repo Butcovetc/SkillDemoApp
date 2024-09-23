@@ -7,7 +7,7 @@ namespace DemoApp.Model.Services.Interfaces
     /// <summary>
     /// Account manadgment service
     /// </summary>
-    internal interface IAccountService
+    public interface IAccountService
     {
         /// <summary>
         /// Login action
@@ -23,6 +23,6 @@ namespace DemoApp.Model.Services.Interfaces
         /// <param name="request">Request token based</param>
         /// <returns>Result list</returns>
 
-        Task<ResponseList<AccountItem>> GetAllUsers(RequestTokenBased request);
+        Task<ResponseList<AccountItem>> GetAllAccountsAsync(RequestTokenBased request);
     }
 }

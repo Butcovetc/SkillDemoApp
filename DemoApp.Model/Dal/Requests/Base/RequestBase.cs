@@ -5,7 +5,7 @@ namespace DemoApp.Model.Dal.Requests.Base
     /// <summary>
     /// Base request object 
     /// </summary>
-    internal class RequestBase
+    public class RequestBase
     {
         /// <summary>
         /// Store client Ip

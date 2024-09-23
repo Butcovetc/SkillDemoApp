@@ -1,7 +1,7 @@
 ﻿
 namespace DemoApp.Model.Dal.Response
 {
-    internal class AccountItem
+    public class AccountItem
     {
         /// <summary>
         /// User login
