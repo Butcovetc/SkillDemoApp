@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DemoApp.Model.DbContext;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 namespace Monee.Logic.DbLayer
 {
     /// <summary>
     /// Database context
     /// </summary>
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext, IDataBaseContext
     {
         /// <summary>
         /// Database context

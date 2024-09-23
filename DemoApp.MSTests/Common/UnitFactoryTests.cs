@@ -23,7 +23,20 @@ namespace DemoApp.MSTests
             unit.Should().NotBeNull(); 
         }
 
-        
+        [TestMethod]
+        public void UnitFactory_CreateEmptyTest()
+        {
+            var unit = UnitFactory
+                .Create()
+                .AddRequestObject(new RequestBase())
+                .SetResultType<ResponseBase>()
+                .SetUnitType<UnitTestFactoryMokUnit>()
+                .CreateUnit();
+
+            unit.Should().NotBeNull();
+        }
+
+
 
         [TestMethod]
         [ExpectedException(typeof(ArgumetMissingException))]

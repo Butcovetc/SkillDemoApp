@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using DemoApp.Model.Dal.Requests;
+﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Response;
 using DemoApp.Model.Units.Base;
 

@@ -14,6 +14,11 @@ namespace DemoApp.Model.Utils.Factories
     {
 
         /// <summary>
+        /// Request object
+        /// </summary>
+        private List<object> _requestObjects = new List<object>();
+
+        /// <summary>
         /// Unit type
         /// </summary>
         private Type? _unitType;
@@ -54,6 +59,19 @@ namespace DemoApp.Model.Utils.Factories
         }
 
         /// <summary>
+        /// Set's UnitFactory request object
+        /// </summary>
+        /// <typeparam name="TRequest">Request type</typeparam>
+        /// <returns>Factory object</returns>
+        public UnitFactory AddRequestObject<TRequest>(TRequest obj)
+            where TRequest : RequestBase
+        {
+            _requestObjects.Add(obj);
+            _requestType = typeof(TRequest);
+            return this;
+        }
+
+        /// <summary>
         /// Set's UnitFactory unit type
         /// </summary>
         /// <typeparam name="TUnit">Unit type</typeparam>
@@ -64,6 +82,16 @@ namespace DemoApp.Model.Utils.Factories
             _unitType = typeof(TUnit);
             return this;
         }
+
+        /// <summary>
+        /// Create's unit of work object base on params
+        /// </summary>
+        /// <param name="request">Unit request object</param>
+        /// <returns></returns>
+        /// <exception cref="KernerException">In case in unit can't be created</exception>
+        /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
+        public object CreateUnit()
+            => CreateUnit([]);
 
         /// <summary>
         /// Create's unit of work object base on params
@@ -92,7 +120,9 @@ namespace DemoApp.Model.Utils.Factories
 
                 ArgumetMissingException.ThrowIfNull(_requestType);
 
-                var unitObj = Activator.CreateInstance(_unitType, args: args);
+                _requestObjects.AddRange(args);
+
+                var unitObj = Activator.CreateInstance(_unitType, args: _requestObjects.ToArray());
 
                 return unitObj ?? throw new KernerException($"Unit {_unitType.GetType()} can't be created!");
             }

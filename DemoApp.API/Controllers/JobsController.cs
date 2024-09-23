@@ -11,6 +11,6 @@ namespace DemoApp.API.Controllers
         /// Constructor
         /// </summary>
         /// <param name="logger">Loger</param>
-        public JobsController(ILogger logger) : base(logger) {}
+        public JobsController(ILogger logger) : base() {}
     }
 }

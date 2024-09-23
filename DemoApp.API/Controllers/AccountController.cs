@@ -1,7 +1,6 @@
 ﻿using DemoApp.Model.Dal.Requests;
 using DemoApp.Model.Dal.Response;
-using DemoApp.Model.Units.Account;
-using Microsoft.AspNetCore.Authorization;
+using DemoApp.Model.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Monee.RestApi.Controllers.Base;
 
@@ -14,10 +13,17 @@ namespace DemoApp.API.Controllers
     {
 
         /// <summary>
+        /// Account service
+        /// </summary>
+        IAccountService _accountService;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="logger">Loger</param>
-        public AccountController(ILogger logger) : base(logger) { }
+        public AccountController(IAccountService accountService) : base() {
+            _accountService = accountService;
+        }
 
         /// <summary>
         /// Account login operation
@@ -25,7 +31,7 @@ namespace DemoApp.API.Controllers
         /// <param name="request">Request object</param>
         /// <returns>Loging result object</returns>
         [HttpPost]
-        public RespLogin Login([FromBody] ReqLogin request)
-            => Run<RespLogin, AccountLoginUnit, ReqLogin>(request);
+        public Task<RespLogin> Login([FromBody] ReqLogin request)
+            => _accountService.LoginAsync(request);
     }
 }
