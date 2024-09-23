@@ -23,10 +23,7 @@ namespace DemoApp.API.Controllers
         /// Constructor
         /// </summary>
         /// <param name="logger">Loger</param>
-        public AccountController(IAccountService accountService) : base()
-        {
-            _accountService = accountService;
-        }
+        public AccountController(IAccountService accountService) : base() => _accountService = accountService;
 
         /// <summary>
         /// Account login operation
@@ -49,10 +46,10 @@ namespace DemoApp.API.Controllers
             => _accountService.GetAllAccountsAsync(request);
 
         /// <summary>
-        /// Get all accounts
+        /// Register accounts
         /// </summary>
-        /// <param name="request">Request object</param>
-        /// <returns>Users collection list</returns>
+        /// <param name="request">Request register account object</param>
+        /// <returns>Registration result object</returns>
         [HttpPost]
         [Route("Register")]
         public Task<RespRegistration> Register([FromBody] ReqRegister request)
