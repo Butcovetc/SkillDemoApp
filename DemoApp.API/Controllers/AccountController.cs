@@ -21,7 +21,8 @@ namespace DemoApp.API.Controllers
         /// Constructor
         /// </summary>
         /// <param name="logger">Loger</param>
-        public AccountController(IAccountService accountService) : base() {
+        public AccountController(IAccountService accountService) : base()
+        {
             _accountService = accountService;
         }
 

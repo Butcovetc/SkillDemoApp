@@ -1,12 +1,5 @@
-﻿using System.Net.Mime;
-using DemoApp.Model.Dal;
-using DemoApp.Model.Dal.Requests.Base;
-using DemoApp.Model.Dal.Response.Base;
-using DemoApp.Model.Exceptions;
-using DemoApp.Model.Exceptions.Critical;
-using DemoApp.Model.Units.Base;
-using DemoApp.Model.Utils.Factories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 
 namespace Monee.RestApi.Controllers.Base
 {
@@ -19,6 +12,6 @@ namespace Monee.RestApi.Controllers.Base
     [Produces(MediaTypeNames.Application.Json)]
     public abstract class BaseApiController : ControllerBase
     {
-        
+
     }
 }

@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 UserSecretsRoot userSecret = new();
 builder.Configuration.Bind(userSecret);
 
-if (userSecret == null 
-    || userSecret.ConnectionStrings == null 
+if (userSecret == null
+    || userSecret.ConnectionStrings == null
     || String.IsNullOrEmpty(userSecret.ConnectionStrings.DemoAppDbConnectionString))
     throw new ArgumentNullException(nameof(userSecret));
 

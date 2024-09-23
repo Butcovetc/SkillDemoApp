@@ -13,8 +13,8 @@ namespace DemoApp.MSTests
     [TestClass]
     public partial class UnitFactoryTests
     {
-        private DataBaseContext _context;
-        private ILogger _logger;
+        private DataBaseContext? _context;
+        private ILogger? _logger;
 
         [TestInitialize]
         public void TestInitialize()

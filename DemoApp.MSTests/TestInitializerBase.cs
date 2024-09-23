@@ -22,7 +22,7 @@ namespace DemoApp.MSTests
         /// <summary>
         /// Service provider field
         /// </summary>
-        protected ServiceProvider ServiceProvider { get; private set; }
+        protected ServiceProvider? ServiceProvider { get; private set; }
 
         /// <summary>
         /// Configuration root object

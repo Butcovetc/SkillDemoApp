@@ -51,7 +51,7 @@ namespace DemoApp.Model.Utils
                     throw new ArgumentNullException("key");
                 if (iv == null || iv.Length <= 0)
                     throw new ArgumentNullException("iv");
-                string plaintext = null;
+                string plaintext = String.Empty;
                 using (Aes aesAlg = Aes.Create())
                 {
                     if (aesAlg == null)

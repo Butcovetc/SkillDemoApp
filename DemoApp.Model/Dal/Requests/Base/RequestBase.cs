@@ -11,6 +11,6 @@ namespace DemoApp.Model.Dal.Requests.Base
         /// Store client Ip
         /// </summary>
         [JsonIgnore]//To hide field from swagger
-        public string Ip { get; set; }
+        public String? Ip { get; set; }
     }
 }
