@@ -1,0 +1,16 @@
+﻿# Generate MoneeApi in C# .net
+
+## Settings
+
+input-file: http://localhost:5294/swagger/v1/swagger.json 
+csharp: true
+output-folder: DemoAppApiClient/
+namespace: DemoApp.ConsoleUI
+
+skip-csproj: true
+add-credential: true
+public-clients: true
+clear-output-folder: true
+service-interface-as-public: true
+generation1-convenience-client: true
+

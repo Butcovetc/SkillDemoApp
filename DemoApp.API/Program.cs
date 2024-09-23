@@ -1,4 +1,4 @@
-using DemoApp.Model.Utils.UserSettings;
+﻿using DemoApp.Model.Utils.UserSettings;
 using Microsoft.EntityFrameworkCore;
 using Monee.Logic.DbLayer;
 
@@ -23,7 +23,9 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c=>
+            c.CustomOperationIds(
+                    e => $"{e.ActionDescriptor.RouteValues["controller"]}_{e.ActionDescriptor.RouteValues["action"]}"));
 
 builder
     .Services
