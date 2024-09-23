@@ -1,5 +1,8 @@
-﻿using DemoApp.Model.Utils.UserSettings;
+﻿using DemoApp.Model.Services;
+using DemoApp.Model.Services.Interfaces;
+using DemoApp.Model.Utils.UserSettings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Monee.Logic.DbLayer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,17 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 UserSecretsRoot userSecret = new();
 builder.Configuration.Bind(userSecret);
 
+builder.Services.AddScoped<ILogger>(t =>LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger("DemoApp"));
+
 if (userSecret == null
     || userSecret.ConnectionStrings == null
     || String.IsNullOrEmpty(userSecret.ConnectionStrings.DemoAppDbConnectionString))
     throw new ArgumentNullException(nameof(userSecret));
 
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 //Database context configuration
 builder.Services.AddDbContext<DataBaseContext>(options =>
     options.UseSqlServer(userSecret.ConnectionStrings.DemoAppDbConnectionString));
 
-
-// Add services to the container.
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

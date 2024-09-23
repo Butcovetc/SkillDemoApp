@@ -105,5 +105,10 @@ namespace DemoApp.ConsoleUI
                 throw;
             }
         }
+
+        internal object Login(object request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
