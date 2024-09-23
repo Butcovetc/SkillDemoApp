@@ -8,7 +8,7 @@ namespace DemoApp.Model.Utils
         public class AESEcryption
         {
             /// <summary>
-            /// Shoulb be stored in usert secrets ащк ыфаен куфыщты
+            /// Shoulb be stored in usert secrets for safty reasons
             /// </summary>
             private static byte[] iv = [45, 78, 34, 157, 79, 45, 231, 32, 222, 111, 243, 123, 214, 34, 56, 78];
             private static byte[] aesKey =
@@ -18,11 +18,21 @@ namespace DemoApp.Model.Utils
                 31, 41, 123, 129,234,12
             ];
 
+            /// <summary>
+            /// Decrypt base64 and AES
+            /// </summary>
+            /// <param name="source">Source string</param>
+            /// <returns></returns>
             public static String FromAesString(String source) 
-                => FromAes(Encoding.UTF8.GetBytes(source));
+                => FromAes(Convert.FromBase64String(source));
 
+            /// <summary>
+            /// Ecrypt to string and base64
+            /// </summary>
+            /// <param name="str"></param>
+            /// <returns></returns>
             public static String ToAesString(String str) 
-                => Encoding.UTF8.GetString(ToAes(str));
+                => Convert.ToBase64String(ToAes(str));
 
             public static String FromAes(byte[] toConvert)
                 => DecryptStringFromBytes_Aes(toConvert, aesKey, iv);
@@ -40,7 +50,7 @@ namespace DemoApp.Model.Utils
                 if (key == null || key.Length <= 0)
                     throw new ArgumentNullException("key");
                 if (iv == null || iv.Length <= 0)
-                    throw new ArgumentNullException("key");
+                    throw new ArgumentNullException("iv");
                 string plaintext = null;
                 using (Aes aesAlg = Aes.Create())
                 {
@@ -52,16 +62,10 @@ namespace DemoApp.Model.Utils
 
                     // Create the streams used for decryption.
                     using (var msDecrypt = new MemoryStream(cipherText))
-                    {
                         using (var csDecrypt = new CryptoStream(msDecrypt
                             , decryptor, CryptoStreamMode.Read))
-                        {
                             using (var srDecrypt = new StreamReader(csDecrypt))
-                            {
                                 plaintext = srDecrypt.ReadToEnd();
-                            }
-                        }
-                    }
                 }
                 return plaintext;
             }

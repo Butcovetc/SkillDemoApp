@@ -16,6 +16,6 @@ namespace DemoApp.Model.Utils.UserSettings
         /// <summary>
         /// Some app key values. Created for an example of usage
         /// </summary>
-        public String? SomeSampleAppKey { get; set; }
+        public String? UserPassWordEncryptionSalt { get; set; }
     }
 }

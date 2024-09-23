@@ -11,7 +11,7 @@ namespace DemoApp.MSTests
     public partial class UnitFactoryTests
     {
         [TestMethod]
-        public void UnitFactorySuccessTest()
+        public void UnitFactory_SuccessTest()
         {
             var unit = UnitFactory
                 .Create()
@@ -27,7 +27,7 @@ namespace DemoApp.MSTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumetMissingException))]
-        public void UnitFactoryMissingRequestTest()
+        public void UnitFactory_MissingRequestTest()
         {
             var unit = UnitFactory
                 .Create()
@@ -38,7 +38,7 @@ namespace DemoApp.MSTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumetMissingException))]
-        public void UnitFactoryMissingResultTest()
+        public void UnitFactory_MissingResultTest()
         {
             var unit = UnitFactory
                 .Create()
@@ -49,7 +49,7 @@ namespace DemoApp.MSTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumetMissingException))]
-        public void UnitFactoryMissingUnitTest()
+        public void UnitFactory_MissingUnitTest()
         {
             var unit = UnitFactory
                 .Create()
@@ -60,7 +60,7 @@ namespace DemoApp.MSTests
 
         [TestMethod]
         [ExpectedException (typeof(KernerException))]
-        public void UnitFactoryEmptyConstructorTypeTest()
+        public void UnitFactory_EmptyConstructorTypeTest()
         {
             var unit = UnitFactory
                 .Create()
@@ -72,7 +72,7 @@ namespace DemoApp.MSTests
 
         [TestMethod]
         [ExpectedException(typeof(KernerException))]
-        public void UnitFactoryWrongRequestTypeTest()
+        public void UnitFactory_WrongRequestTypeTest()
         {
             var unit = UnitFactory
                 .Create()

@@ -35,7 +35,7 @@
                 CleanUp();
             }
 
-            catch (Exception exception)
+            catch (Exception)
             {
                 throw;
             }
