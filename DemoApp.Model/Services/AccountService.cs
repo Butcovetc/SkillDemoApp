@@ -1,4 +1,5 @@
 ﻿using DemoApp.Model.Dal.Requests;
+using DemoApp.Model.Dal.Requests.Base;
 using DemoApp.Model.Dal.Response;
 using DemoApp.Model.Services.Interfaces;
 using DemoApp.Model.Units.Account;
@@ -21,6 +22,13 @@ namespace DemoApp.Model.Services
             :base(logger,context)
         { }
 
+        /// <summary>
+        /// Returns users list
+        /// </summary>
+        /// <param name="request">Request token based</param>
+        /// <returns>Result list</returns>
+        public Task<ResponseList<AccountItem>> GetAllUsers(RequestTokenBased request)
+            => RunAsync<ResponseList<AccountItem>, GetAllUsersUnit, RequestTokenBased>(request);
 
         /// <summary>
         /// User login method

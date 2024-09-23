@@ -15,6 +15,6 @@ namespace DemoApp.Model.Dal.Response
         /// <summary>
         /// Items
         /// </summary>
-        public required ICollection<TListItem> Items { get; set; }
+        public ICollection<TListItem> Items { get; set; }
     }
 }

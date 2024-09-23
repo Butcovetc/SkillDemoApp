@@ -11,7 +11,6 @@ namespace DemoApp.API.Controllers
     /// </summary>
     internal class AccountController : BaseApiController
     {
-
         /// <summary>
         /// Account service
         /// </summary>
