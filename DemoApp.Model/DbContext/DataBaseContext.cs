@@ -6,7 +6,7 @@ namespace Monee.Logic.DbLayer
     /// <summary>
     /// Database context
     /// </summary>
-    public class DataBaseContext : DbContext, IDataBaseContext
+    internal class DataBaseContext : DbContext, IDataBaseContext
     {
         /// <summary>
         /// Database context

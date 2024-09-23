@@ -6,7 +6,7 @@ using System.Text;
 namespace DemoApp.MSTests.Facades
 {
     [TestClass]
-    public class CryptoFacadeTests:TestInitializerBase
+    internal class CryptoFacadeTests:TestInitializerBase
     {
         [TestMethod]
         public void CryptoFacade_EncryptPasswordTest() {

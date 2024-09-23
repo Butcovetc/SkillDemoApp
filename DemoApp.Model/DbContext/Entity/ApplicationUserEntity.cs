@@ -6,7 +6,7 @@ namespace DemoApp.Model.DbContext.Entity
     /// <summary>
     /// Application user
     /// </summary>
-    public class ApplicationUserEntity : BaseIdEntity
+    internal class ApplicationUserEntity : BaseIdEntity
     {
         /// <summary>
         /// User login

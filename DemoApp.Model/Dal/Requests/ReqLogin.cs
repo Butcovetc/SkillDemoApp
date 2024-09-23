@@ -5,7 +5,7 @@ namespace DemoApp.Model.Dal.Requests
     /// <summary>
     /// Account login request object
     /// </summary>
-    public class ReqLogin:RequestBase
+    internal class ReqLogin:RequestBase
     {
         /// <summary>
         /// Login

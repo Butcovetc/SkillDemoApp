@@ -5,7 +5,7 @@ namespace DemoApp.Model.Exceptions
     /// <summary>
     /// Base class for all critical exception 
     /// </summary>
-    public class BaseCriticalException : DemoAppException
+    internal class BaseCriticalException : DemoAppException
     {
         /// <summary>
         /// Constructor

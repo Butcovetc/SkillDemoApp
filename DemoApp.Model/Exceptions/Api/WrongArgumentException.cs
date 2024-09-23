@@ -5,7 +5,7 @@ namespace DemoApp.Model.Exceptions.Api
     /// <summary>
     /// Wrong argument exception
     /// </summary>
-    public class WrongArgumentException : BaseApiException
+    internal class WrongArgumentException : BaseApiException
     {
         /// <summary>
         /// Constuctor

@@ -6,7 +6,7 @@ namespace DemoApp.Model.Services.Interfaces
     /// <summary>
     /// Account manadgment service
     /// </summary>
-    public interface IAccountService
+    internal interface IAccountService
     {
         /// <summary>
         /// Login action

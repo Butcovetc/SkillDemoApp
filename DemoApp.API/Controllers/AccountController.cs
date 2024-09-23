@@ -9,7 +9,7 @@ namespace DemoApp.API.Controllers
     /// <summary>
     /// Account controller. Responde for account related actions
     /// </summary>
-    public class AccountController : BaseApiController
+    internal class AccountController : BaseApiController
     {
 
         /// <summary>

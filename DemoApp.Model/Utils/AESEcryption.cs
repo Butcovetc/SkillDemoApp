@@ -5,7 +5,7 @@ namespace DemoApp.Model.Utils
 {
     public static partial class CryptoFacade
     {
-        public class AESEcryption
+        internal class AESEcryption
         {
             /// <summary>
             /// Shoulb be stored in usert secrets for safty reasons

@@ -5,7 +5,7 @@ namespace DemoApp.Model.Dal.Response
     /// <summary>
     /// Response login object
     /// </summary>
-    public class RespLogin: ResponseBase
+    internal class RespLogin: ResponseBase
     {
         /// <summary>
         /// Authorization token

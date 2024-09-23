@@ -8,7 +8,7 @@ namespace DemoApp.Model.Units.Base
     /// <summary>
     /// Authorization base unit. Should be based for all auth units
     /// </summary>
-    public class AuthorizationBasedUnit<TResult, TRequest> : RequestResultUnitAbstract<TResult, TRequest>
+    internal class AuthorizationBasedUnit<TResult, TRequest> : RequestResultUnitAbstract<TResult, TRequest>
         where TResult : ResponseBase, new()
         where TRequest : RequestTokenBased
     {

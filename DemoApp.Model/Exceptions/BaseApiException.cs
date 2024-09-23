@@ -5,7 +5,7 @@ namespace DemoApp.Model.Exceptions
     /// <summary>
     /// Base class for all exceptions
     /// </summary>
-    public class BaseApiException : DemoAppException
+    internal class BaseApiException : DemoAppException
     {
         /// <summary>
         /// Constuctor

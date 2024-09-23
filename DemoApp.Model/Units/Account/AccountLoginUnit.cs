@@ -7,7 +7,7 @@ namespace DemoApp.Model.Units.Account
     /// <summary>
     /// authorize user
     /// </summary>
-    public class AccountLoginUnit : RequestResultUnitAbstract<RespLogin, ReqLogin>
+    internal class AccountLoginUnit : RequestResultUnitAbstract<RespLogin, ReqLogin>
     {
         /// <summary>
         /// Constructor 

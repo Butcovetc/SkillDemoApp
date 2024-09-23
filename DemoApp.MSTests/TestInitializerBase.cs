@@ -16,12 +16,12 @@ namespace DemoApp.MSTests
     /// Base test class
     /// </summary>
     [TestClass]
-    public class TestInitializerBase
+    internal class TestInitializerBase
     {
         /// <summary>
         /// Service provider field
         /// </summary>
-        protected ServiceProvider ServiceProvider { get; private set; };
+        protected ServiceProvider ServiceProvider { get; private set; }
 
         /// <summary>
         /// Configuration root object

@@ -8,15 +8,15 @@ using Moq;
 namespace DemoApp.MSTests.Account
 {
     [TestClass]
-    public class AccountLoginUnit_Tests : TestInitializerBase
+    internal class AccountLoginUnit_Tests : TestInitializerBase
     {
         IAccountService _service;
         ILogger<AccountService> _logger;
         private IServiceScope _scope;
 
 
-        [ClassInitialize]
-        public void ClassInitializeMethod()
+        [TestInitialize]
+        public void TestInitializeMethod()
         {
             ConfigureServieProvider();
 
@@ -24,12 +24,6 @@ namespace DemoApp.MSTests.Account
 
             _logger = Mock.Of<ILogger<AccountService>>();
             _service = _scope.ServiceProvider.GetRequiredService<IAccountService>();
-        }
-
-        [TestInitialize]
-        public void TestInitializeMethod()
-        {
-            
         }
 
         [TestCleanup]

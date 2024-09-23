@@ -5,7 +5,7 @@ namespace DemoApp.Model.Exceptions
     /// <summary>
     /// Demo app exception
     /// </summary>
-    public class DemoAppException : Exception
+    internal class DemoAppException : Exception
     {
         /// <summary>
         /// Constructor

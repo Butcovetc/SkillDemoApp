@@ -5,7 +5,7 @@ namespace DemoApp.Model.Exceptions.Api
     /// <summary>
     /// Argument missing exception
     /// </summary>
-    public class ArgumetMissingException : BaseApiException
+    internal class ArgumetMissingException : BaseApiException
     {
         /// <summary>
         /// Constuctor

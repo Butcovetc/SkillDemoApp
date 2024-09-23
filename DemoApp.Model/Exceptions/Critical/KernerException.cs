@@ -6,7 +6,7 @@ namespace DemoApp.Model.Exceptions.Critical
     /// <summary>
     /// Application kernel exception
     /// </summary>
-    public class KernerException : BaseCriticalException
+    internal class KernerException : BaseCriticalException
     {
         /// <summary>
         /// Constructor

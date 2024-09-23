@@ -7,7 +7,7 @@ namespace DemoApp.MSTests
     /// <summary>
     /// Mock unit doing nothing
     /// </summary>
-    public class UnitTestFactoryMokUnit : RequestResultUnitAbstract<ResponseBase, RequestBase>
+    internal class UnitTestFactoryMokUnit : RequestResultUnitAbstract<ResponseBase, RequestBase>
     {
         public UnitTestFactoryMokUnit(RequestBase request) : base(request)
         {
@@ -18,7 +18,7 @@ namespace DemoApp.MSTests
     /// <summary>
     /// Mock unit doing nothing
     /// </summary>
-    public class UnitTestFactory_EmptyContructor_MokUnit : RequestResultUnitAbstract<ResponseBase, RequestBase>
+    internal class UnitTestFactory_EmptyContructor_MokUnit : RequestResultUnitAbstract<ResponseBase, RequestBase>
     {
         public UnitTestFactory_EmptyContructor_MokUnit() : base(new()) { }
     }

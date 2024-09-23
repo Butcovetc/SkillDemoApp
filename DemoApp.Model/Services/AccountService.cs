@@ -8,7 +8,7 @@ namespace DemoApp.Model.Services
     /// <summary>
     /// Account manadgment service
     /// </summary>
-    public class AccountService :ServiceBase, IAccountService
+    internal class AccountService :ServiceBase, IAccountService
     {
         /// <summary>
         /// User login method

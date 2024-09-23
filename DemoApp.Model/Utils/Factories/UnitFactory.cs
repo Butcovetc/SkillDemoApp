@@ -10,7 +10,7 @@ namespace DemoApp.Model.Utils.Factories
     /// <summary>
     /// Creates specific Unit of work
     /// </summary>
-    public class UnitFactory
+    internal class UnitFactory
     {
 
         /// <summary>

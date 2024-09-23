@@ -3,7 +3,7 @@
     /// <summary>
     /// Stores connection strings
     /// </summary>
-    public class ConnectionStrings
+    internal class ConnectionStrings
     {
         /// <summary>
         /// Demo app databsae connection string

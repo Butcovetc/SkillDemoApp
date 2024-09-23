@@ -5,7 +5,7 @@ namespace DemoApp.Model.Dal
     /// <summary>
     /// Request object by id
     /// </summary>
-    public class RequestById:RequestTokenBased
+    internal class RequestById:RequestTokenBased
     {
         /// <summary>
         /// Id param

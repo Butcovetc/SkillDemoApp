@@ -3,7 +3,7 @@
     /// <summary>
     /// Request token base
     /// </summary>
-    public class RequestTokenBased:RequestBase
+    internal class RequestTokenBased:RequestBase
     {
         /// <summary>
         /// Token 

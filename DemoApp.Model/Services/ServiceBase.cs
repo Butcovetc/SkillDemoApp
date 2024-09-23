@@ -11,7 +11,7 @@ namespace DemoApp.Model.Services
     /// <summary>
     /// Model service base class
     /// </summary>
-    public abstract class ServiceBase
+    internal abstract class ServiceBase
     {
         /// <summary>
         /// Run TUnitOfWorlk with TRequest type & TResult. TUnitOfWorlk will be automatically created and excecuted
@@ -19,7 +19,7 @@ namespace DemoApp.Model.Services
         /// <typeparam name="TUnitOfWorlk">TUnitOfWorlk type</typeparam>
         /// <param name="request">Request object</param>
         /// <returns>Result object</returns>
-        public async Task<TResult> RunAsync<TResult, TUnitOfWorlk, TRequest>(TRequest request, bool ignoreLogs = false)
+        internal async Task<TResult> RunAsync<TResult, TUnitOfWorlk, TRequest>(TRequest request, bool ignoreLogs = false)
             where TResult : ResponseBase, new()
             where TUnitOfWorlk : RequestResultUnitAbstract<TResult, TRequest>
             where TRequest : RequestBase
@@ -32,7 +32,7 @@ namespace DemoApp.Model.Services
         /// <typeparam name="TUnitOfWorlk">TUnitOfWorlk type</typeparam>
         /// <param name="request">Request object</param>
         /// <returns>Result object</returns>
-        public TResult Run<TResult, TUnitOfWorlk, TRequest>(TRequest request, bool ignoreLogs = false)
+        internal TResult Run<TResult, TUnitOfWorlk, TRequest>(TRequest request, bool ignoreLogs = false)
             where TResult : ResponseBase, new()
             where TUnitOfWorlk : RequestResultUnitAbstract<TResult, TRequest>
             where TRequest : RequestBase
