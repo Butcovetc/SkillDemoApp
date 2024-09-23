@@ -21,6 +21,12 @@ namespace Monee.Logic.DbLayer
         public DataBaseContext(DbContextOptions<DataBaseContext> options) 
             : base(options) { }
 
+        /// <summary>
+        /// Application users
+        /// </summary>
+        public DbSet<ApplicationUserEntity> Users { get; set; }
+
+
 #if DEBUG
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.LogTo(x => Trace.WriteLine(x))
@@ -29,10 +35,14 @@ namespace Monee.Logic.DbLayer
 #endif
 
 
-        /// <summary>
-        /// Application users
-        /// </summary>
-        public DbSet<ApplicationUserEntity> Users {  get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder
+                .Entity<ApplicationUserEntity>()
+                .HasIndex(account => account.Login)
+                .IsUnique();
+        }
     }
 }

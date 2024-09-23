@@ -44,6 +44,10 @@
         /// </summary>
         AccountAreNotActive = 101,
 
+        /// <summary>
+        /// Invalid token exception
+        /// </summary>
+        InvalidTokenException = 102,
 
         #endregion
 

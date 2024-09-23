@@ -91,7 +91,7 @@ namespace DemoApp.Model.Utils.Factories
         /// <param name="request">Unit request object</param>
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
-        /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
+        /// /// <exception cref="UserNotFoundOrPasswordAreNotValidException">If cas is one of params are not set</exception>
         public object CreateUnit(ILogger logger, DataBaseContext context)
             => CreateUnit(logger, context,[]);
 
@@ -101,7 +101,7 @@ namespace DemoApp.Model.Utils.Factories
         /// <param name="request">Unit request object</param>
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
-        /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
+        /// /// <exception cref="UserNotFoundOrPasswordAreNotValidException">If cas is one of params are not set</exception>
         public object CreateUnit(ILogger logger, DataBaseContext context, object request)
             => CreateUnit(logger, context,[request]);
 
@@ -111,7 +111,7 @@ namespace DemoApp.Model.Utils.Factories
         /// <param name="args">Constructor args</param>
         /// <returns></returns>
         /// <exception cref="KernerException">In case in unit can't be created</exception>
-        /// /// <exception cref="ArgumetMissingException">If cas is one of params are not set</exception>
+        /// /// <exception cref="UserNotFoundOrPasswordAreNotValidException">If cas is one of params are not set</exception>
         public object CreateUnit(ILogger logger, DataBaseContext context, object[] args)
         {
             try

@@ -13,7 +13,6 @@ namespace DemoApp.Model.DbContext.Entity
         /// </summary>
         public String? Login { get; set; }
 
-
         /// <summary>
         /// Password hash
         /// </summary>
@@ -25,8 +24,8 @@ namespace DemoApp.Model.DbContext.Entity
         public String? Email { get; set; }
 
         /// <summary>
-        /// Actual user session
+        /// Used to kreate session
         /// </summary>
-        public String? Session { get; set; }
+        public Guid SessionKeyUniq { get; set; }
     }
 }

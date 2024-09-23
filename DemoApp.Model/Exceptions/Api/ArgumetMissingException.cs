@@ -24,7 +24,16 @@ namespace DemoApp.Model.Exceptions.Api
         /// </summary>
         /// <param name="obj">object to check</param>
         /// <exception cref="ArgumetMissingException">Exception message</exception>
-        public static void ThrowIfNull(Object? obj)
+        public static void ThrowIfNullOrEmpty(String? obj)
+            => ThrowIfNullOrEmpty(obj, String.Empty);
+
+        /// <summary>
+        /// Throw an a ArgumentMissingException with specified message text
+        /// </summary>
+        /// <param name="obj">object to check</param>
+        /// <param name="message">Exception mesage</param>
+        /// <exception cref="ArgumetMissingException">Exception message</exception>
+        public static void ThrowIfNullOrEmpty(String? obj,String message)
         {
             if (obj == null)
                 throw new ArgumetMissingException();
@@ -34,7 +43,16 @@ namespace DemoApp.Model.Exceptions.Api
         /// Throw an a ArgumentMissingException with specified message text
         /// </summary>
         /// <param name="obj">object to check</param>
-        /// <param name="message"></param>
+        /// <exception cref="ArgumetMissingException">Exception message</exception>
+        public static void ThrowIfNull(Object? obj)
+            => TrowIfNull(obj,String.Empty);
+        
+
+        /// <summary>
+        /// Throw an a ArgumentMissingException with specified message text
+        /// </summary>
+        /// <param name="obj">object to check</param>
+        /// <param name="message">Exception mesage</param>
         /// <exception cref="ArgumetMissingException">Exception message</exception>
         public static void TrowIfNull(Object obj, String message)
         {

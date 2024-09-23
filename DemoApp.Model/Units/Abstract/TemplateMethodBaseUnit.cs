@@ -59,8 +59,10 @@ namespace DemoApp.Model.Units.Abstract
                 CleanUp();
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logger.LogError(exception: ex,ex.Message);
+
                 throw;
             }
 

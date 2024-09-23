@@ -1,16 +1,10 @@
 ﻿using DemoApp.Model.Dal.Requests;
-using DemoApp.Model.DbContext;
 using DemoApp.Model.DbContext.Entity;
-using DemoApp.Model.Services;
 using DemoApp.Model.Services.Interfaces;
 using DemoApp.Model.Utils;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Monee.Logic.DbLayer;
-using Moq;
-using System.Reflection.Metadata;
-using System.Security.AccessControl;
 
 namespace DemoApp.MSTests.Account
 {
