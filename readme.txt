@@ -31,7 +31,7 @@ Application is complete and fully functional
 
 Console application use user secret file defined in InjectionFacade/FileName
 
-Test lib use user secret file defined in TestInitializerBase/UserSecretFile
+Test lib use user secret file defined in TestInitializerBase/UserSecretFile (Should reference same as DemoApp.API )
 
 
 
@@ -45,4 +45,6 @@ Those two project should be started together by (multiple startup) (pls check so
 DemoApp.Model - contains application logic
 DemoApp.MSTests - contains test's over a model
 
-Application used MSSQL server
+Application use MSSQL server 
+Test's use db in memory
+
