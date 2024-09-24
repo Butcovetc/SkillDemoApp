@@ -28,6 +28,13 @@ Application is complete and fully functional
 }
 
 
+
+Console application use user secret file defined in InjectionFacade/FileName
+
+Test lib use user secret file defined in TestInitializerBase/UserSecretFile
+
+
+
 >>>Project's description 
 
 DemoApp.API - Rest API project.
