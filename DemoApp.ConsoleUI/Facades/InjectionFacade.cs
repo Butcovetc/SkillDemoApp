@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using Azure.Core.Pipeline;
+using DemoApp.ConsoleUI.Facades.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

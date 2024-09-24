@@ -56,7 +56,9 @@ namespace DemoApp.Model.Units.Account
             Context.SaveChanges();
             
             Result.Token = PackToken(_user);
-            
+            Result.Email = _user.Email;
+            Result.Login = _user.Login;
+
             SetSuccess();
         
         }

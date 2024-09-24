@@ -30,7 +30,7 @@ namespace DemoApp.Model.Services
         /// <param name="request">Request token based</param>
         /// <returns>Result list</returns>
         public Task<ResponseList<AccountItem>> GetAllAccountsAsync(RequestTokenBased request)
-            => RunAsync<ResponseList<AccountItem>, GetAllUsersUnit, RequestTokenBased>(request);
+            => RunAsync<ResponseList<AccountItem>, GetAllAccountsUnit, RequestTokenBased>(request);
 
         /// <summary>
         /// Register account

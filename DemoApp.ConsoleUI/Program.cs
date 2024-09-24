@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DemoApp.ConsoleUI.Facades;
-using Spectre.Console;
 
 var behavior = new ConsoleUIBehaviourFacade();
 behavior.Init();
@@ -29,9 +28,6 @@ do
             break;
     }
 } while (continueFlag);
-
-
-
 
 
 Console.WriteLine();

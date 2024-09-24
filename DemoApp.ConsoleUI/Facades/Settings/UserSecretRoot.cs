@@ -1,4 +1,4 @@
-﻿namespace DemoApp.ConsoleUI.Facades
+﻿namespace DemoApp.ConsoleUI.Facades.Settings
 {
     /// <summary>
     /// User secret root

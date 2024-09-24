@@ -16,14 +16,18 @@ namespace DemoApp.ConsoleUI.Models
         }
 
         /// <summary> Initializes a new instance of <see cref="AccountItem"/>. </summary>
+        /// <param name="id"></param>
         /// <param name="login"></param>
         /// <param name="email"></param>
-        internal AccountItem(string login, string email)
+        internal AccountItem(int? id, string login, string email)
         {
+            Id = id;
             Login = login;
             Email = email;
         }
 
+        /// <summary> Gets the id. </summary>
+        public int? Id { get; }
         /// <summary> Gets the login. </summary>
         public string Login { get; }
         /// <summary> Gets the email. </summary>

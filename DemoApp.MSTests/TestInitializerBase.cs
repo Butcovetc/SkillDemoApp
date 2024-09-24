@@ -19,6 +19,12 @@ namespace DemoApp.MSTests
     [TestClass]
     public class TestInitializerBase
     {
+
+        /// <summary>
+        /// Should be replaced if file name chadged
+        /// </summary>
+        private const String UserSecretFile = "a4173c1c-b17e-4f51-96ae-67c24dc7a624";
+
         /// <summary>
         /// Service provider field
         /// </summary>
@@ -69,7 +75,6 @@ namespace DemoApp.MSTests
                 }
             };
         }
-
         protected void ConfigureServieProvider()
         {
             var services = new ServiceCollection();
@@ -95,7 +100,7 @@ namespace DemoApp.MSTests
 
             var configuration = new ConfigurationBuilder()
                 //.AddJsonFile("appsettings.json", true)
-                .AddUserSecrets("a4173c1c-b17e-4f51-96ae-67c24dc7a624")
+                .AddUserSecrets(UserSecretFile)
                .Build();
 
             configuration.Bind(Settings);

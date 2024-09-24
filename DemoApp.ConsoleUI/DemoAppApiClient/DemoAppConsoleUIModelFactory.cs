@@ -16,11 +16,13 @@ namespace DemoApp.ConsoleUI.Models
         /// <summary> Initializes a new instance of <see cref="Models.RespLogin"/>. </summary>
         /// <param name="error"></param>
         /// <param name="errorDescription"></param>
+        /// <param name="login"></param>
+        /// <param name="email"></param>
         /// <param name="token"></param>
         /// <returns> A new <see cref="Models.RespLogin"/> instance for mocking. </returns>
-        public static RespLogin RespLogin(ErrorCodeEnum? error = null, string errorDescription = null, string token = null)
+        public static RespLogin RespLogin(ErrorCodeEnum? error = null, string errorDescription = null, string login = null, string email = null, string token = null)
         {
-            return new RespLogin(error, errorDescription, token);
+            return new RespLogin(error, errorDescription, login, email, token);
         }
 
         /// <summary> Initializes a new instance of <see cref="Models.AccountItemResponseList"/>. </summary>
@@ -36,12 +38,13 @@ namespace DemoApp.ConsoleUI.Models
         }
 
         /// <summary> Initializes a new instance of <see cref="Models.AccountItem"/>. </summary>
+        /// <param name="id"></param>
         /// <param name="login"></param>
         /// <param name="email"></param>
         /// <returns> A new <see cref="Models.AccountItem"/> instance for mocking. </returns>
-        public static AccountItem AccountItem(string login = null, string email = null)
+        public static AccountItem AccountItem(int? id = null, string login = null, string email = null)
         {
-            return new AccountItem(login, email);
+            return new AccountItem(id, login, email);
         }
 
         /// <summary> Initializes a new instance of <see cref="Models.RespRegistration"/>. </summary>

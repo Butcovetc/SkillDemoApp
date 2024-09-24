@@ -11,13 +11,13 @@ namespace DemoApp.Model.Units.Account
     /// <summary>
     /// authorize user
     /// </summary>
-    internal class GetAllUsersUnit : AuthorizationBasedUnit<ResponseList<AccountItem>, RequestTokenBased>
+    internal class GetAllAccountsUnit : AuthorizationBasedUnit<ResponseList<AccountItem>, RequestTokenBased>
     {
         /// <summary>
         /// Constructor 
         /// </summary>
         /// <param name="request">Request object</param>
-        public GetAllUsersUnit(ILogger logger, DataBaseContext context, RequestTokenBased request) 
+        public GetAllAccountsUnit(ILogger logger, DataBaseContext context, RequestTokenBased request) 
             : base(logger, context, request) {}
 
 
@@ -29,6 +29,7 @@ namespace DemoApp.Model.Units.Account
                       in Context.Users.AsNoTracking()
                       select new AccountItem
                       {
+                          Id = user.Id,
                           Email = user.Email,
                           Login = user.Login
                       }).ToList();

@@ -43,7 +43,8 @@ namespace DemoApp.MSTests.Account
             var pass = Faker.StringFaker.AlphaNumeric(10);
             var user = new ApplicationUserEntity
             {
-                Login = Faker.InternetFaker.Email(),
+                Login = Faker.StringFaker.AlphaNumeric(5),
+                Email = Faker.InternetFaker.Email(),
                 PassHash = CryptoFacade.EncryptPass(pass)
             };
 
@@ -62,6 +63,8 @@ namespace DemoApp.MSTests.Account
             result.Should().NotBeNull();
             result.Error.Should().Be(Model.Dal.ErrorCodeEnum.Success);
             result.Token.Should().NotBeNullOrWhiteSpace();
+            result.Email.Should().Be(user.Email);
+            result.Login.Should().Be(user.Login);
         }
 
         [TestMethod]

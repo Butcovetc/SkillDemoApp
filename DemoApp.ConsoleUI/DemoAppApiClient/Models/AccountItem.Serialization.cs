@@ -18,10 +18,20 @@ namespace DemoApp.ConsoleUI.Models
             {
                 return null;
             }
+            int? id = default;
             string login = default;
             string email = default;
             foreach (var property in element.EnumerateObject())
             {
+                if (property.NameEquals("id"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        continue;
+                    }
+                    id = property.Value.GetInt32();
+                    continue;
+                }
                 if (property.NameEquals("login"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
@@ -43,7 +53,7 @@ namespace DemoApp.ConsoleUI.Models
                     continue;
                 }
             }
-            return new AccountItem(login, email);
+            return new AccountItem(id, login, email);
         }
 
         /// <summary> Deserializes the model from a raw response. </summary>

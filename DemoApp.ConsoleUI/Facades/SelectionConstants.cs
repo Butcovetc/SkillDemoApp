@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DemoApp.ConsoleUI.Facades
 {
+    /// <summary>
+    /// User selectio constants
+    /// </summary>
     internal class SelectionConstants
     {
         public const String Registration = "Registration";

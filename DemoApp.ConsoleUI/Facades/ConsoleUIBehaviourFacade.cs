@@ -54,6 +54,8 @@ namespace DemoApp.ConsoleUI.Facades
                 {
                     AnsiConsole.MarkupLine($"[green]Authorization complete Successfully![/]");
                     AnsiConsole.MarkupLine($"[silver]Authorization token:{result.Value.Token}![/]");
+
+                    AnsiConsole.MarkupLine($"[silver] Login:{result.Value.Login} Email:{result.Value.Email}![/]");
                     _token = result.Value.Token;
                     return result.Value.Token;
                 }
@@ -73,6 +75,9 @@ namespace DemoApp.ConsoleUI.Facades
             }
         }
 
+        /// <summary>
+        /// Get all users data
+        /// </summary>
         public void CheckDataBase()
         {
             if (String.IsNullOrEmpty(_token))
@@ -94,10 +99,12 @@ namespace DemoApp.ConsoleUI.Facades
                     grid.AddColumn();
                     grid.AddColumn();
                     grid.AddColumn();
-                    grid.AddRow(new string[] { "Login" , "Email" });
+                    grid.AddColumn();
+                    grid.AddRow(new string[] { "ID", "Login" , "Email" });
 
                     foreach (var item in result.Value.Items)
-                        grid.AddRow(new string[] { item.Login, item.Email });
+                        grid.AddRow(new string[] { item.Id.ToString(), item.Login, item.Email });
+                    
                     AnsiConsole.Write(grid);
                 }
                 else

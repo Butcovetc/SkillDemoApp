@@ -20,6 +20,8 @@ namespace DemoApp.ConsoleUI.Models
             }
             ErrorCodeEnum? error = default;
             string errorDescription = default;
+            string login = default;
+            string email = default;
             string token = default;
             foreach (var property in element.EnumerateObject())
             {
@@ -42,6 +44,26 @@ namespace DemoApp.ConsoleUI.Models
                     errorDescription = property.Value.GetString();
                     continue;
                 }
+                if (property.NameEquals("login"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        login = null;
+                        continue;
+                    }
+                    login = property.Value.GetString();
+                    continue;
+                }
+                if (property.NameEquals("email"u8))
+                {
+                    if (property.Value.ValueKind == JsonValueKind.Null)
+                    {
+                        email = null;
+                        continue;
+                    }
+                    email = property.Value.GetString();
+                    continue;
+                }
                 if (property.NameEquals("token"u8))
                 {
                     if (property.Value.ValueKind == JsonValueKind.Null)
@@ -53,7 +75,7 @@ namespace DemoApp.ConsoleUI.Models
                     continue;
                 }
             }
-            return new RespLogin(error, errorDescription, token);
+            return new RespLogin(error, errorDescription, login, email, token);
         }
 
         /// <summary> Deserializes the model from a raw response. </summary>

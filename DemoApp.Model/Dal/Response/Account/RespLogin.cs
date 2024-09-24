@@ -8,8 +8,18 @@ namespace DemoApp.Model.Dal.Response.Account
     public class RespLogin : ResponseBase
     {
         /// <summary>
+        /// Login
+        /// </summary>
+        public String? Login { get; set; }
+
+        /// <summary>
+        /// Email
+        /// </summary>
+        public String? Email { get; set; }
+
+        /// <summary>
         /// Authorization token
         /// </summary>
-        public string? Token { get; set; }
+        public String? Token { get; set; }
     }
 }
